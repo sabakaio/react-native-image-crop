@@ -10,12 +10,14 @@ export interface Style {
 export default StyleSheet.create<Style>({
   container: {
     flex: 1,
-    padding: 30,
+    position: 'relative',
+    padding: 10,
     justifyContent: 'center',
     borderWidth: 1,
-    borderColor: '#00f',
+    borderColor: '#0f0',
   },
   image: {
+    flex: 1,
   },
   rect: {
     borderWidth: 1,

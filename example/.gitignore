@@ -1,3 +1,7 @@
+# Artifacts
+.#*
+*.log
+
 # OSX
 #
 .DS_Store
@@ -39,7 +43,12 @@ yarn-error.log
 # BUCK
 buck-out/
 \.buckd/
+android/app/libs
 *.keystore
+
+# Firebase
+ios/GoogleService-Info.plist
+database.rules.json
 
 # fastlane
 #

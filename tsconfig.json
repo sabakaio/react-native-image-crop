@@ -23,6 +23,7 @@
     "example"
   ],
   "types": [
-    "typePatches"
+    "typePatches",
+    "./declarations.d.ts"
   ]
 }

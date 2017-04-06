@@ -5,7 +5,7 @@ exports.default = react_native_1.StyleSheet.create({
     container: {
         flex: 1,
         position: 'relative',
-        padding: 20,
+        padding: 10,
         justifyContent: 'center',
         borderWidth: 1,
         borderColor: '#0f0',

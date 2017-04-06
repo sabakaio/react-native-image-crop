@@ -4,13 +4,13 @@ import {
 } from 'react';
 import {
   View,
-  Image,
   Dimensions,
   PanResponder,
   PanResponderInstance,
   PanResponderGestureState,
   LayoutChangeEvent,
 } from 'react-native';
+import ResponsiveImage from 'react-native-responsive-image'
 
 import styles from './styles'
 
@@ -19,8 +19,15 @@ const ACTIVE_BORDER_WIDTH = 2;
 
 type ActiveSide = 'Top' | 'Right' | 'Bottom' | 'Left';
 
+export interface ImageProp {
+  uri: string,
+  width: number,
+  height: number,
+}
+
 export interface CropProps {
-  image: string,
+  image: ImageProp,
+  style: any,
 }
 
 export interface CropStyleState {
@@ -275,14 +282,23 @@ export default class Crop extends Component<CropProps, CropState> {
     });
   }
 
+  // onLayout={this.adjustSize}
   render() {
+    const { image } = this.props
+
     return (
-      <View style={[styles.container, this.state.containerStyle]}>
-        <Image
-          source={{ uri: this.props.image }}
+      <View
+        style={[
+          styles.container,
+          this.state.containerStyle,
+        ]}
+      >
+        <ResponsiveImage
+          initWidth={100}
+          initHeight={100}
+          source={typeof image === 'string' ? { uri: image } : image}
           style={styles.image}
           resizeMode="contain"
-          onLayout={this.adjustSize}
         >
           <View style={[styles.fade, styles.fadeTop, { height: this.state.style.top }]} />
           <View
@@ -325,7 +341,7 @@ export default class Crop extends Component<CropProps, CropState> {
               <View style={styles.cornerDot} />
             </View>
           </View>
-        </Image>
+        </ResponsiveImage>
       </View>
     );
   }
